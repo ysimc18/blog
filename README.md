@@ -1,37 +1,89 @@
-## Welcome to GitHub Pages
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    
+    <section class="container">
+        <div class="content">
+            <h1>Hi,</h1>
+            <p>I am Samantha CHIU Yuen Sim.</p>
+        </div>
+    </section>
 
-You can use the [editor on GitHub](https://github.com/ysimc18/blog/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+    <section class="container">
+        <div class="content">
+            <h1>Step 1</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+    <section class="container">
+        <div class="content">
+            <h1>Step 2</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
 
-### Markdown
+    <section class="container">
+        <div class="content">
+            <h1>Step 3</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+    <section class="container">
+        <div class="content">
+                <img src="hi.jpg" alt="hi">
+            <h1>Step 4</h1>
+            <p>Start it like this..</p>
+        </div>
+    </section>
 
-```markdown
-Syntax highlighted code block
+    <div id="set-height"></div>
 
-# Header 1
-## Header 2
-### Header 3
+    <video id="v0" tabindex="0", autobuffer preload>
+        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="IMG_4774.MP4"></source>
+    </video>
+    <script src="sticky.js"></script>
+    <script>
 
-- Bulleted
-- List
+        enterView({
+            selector: 'section',
+            enter: function(el) {
+                el.classList.add('entered');
+            }
+        })
+    
+        var frameNumber = 0, // start video at frame 0
+        // lower numbers = faster playback
+        playbackConst = 100, 
+        // get page height from video duration
+        setHeight = document.getElementById("set-height"), 
+        // select video element         
+        vid = document.getElementById('v0'); 
+        // var vid = $('#v0')[0]; // jquery option
 
-1. Numbered
-2. List
+    // dynamically set the page height according to video length
+    vid.addEventListener('loadedmetadata', function() {
+    setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
+    });
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
+    // Use requestAnimationFrame for smooth playback
+    function scrollPlay(){  
+    var frameNumber  = window.pageYOffset/playbackConst;
+    vid.currentTime  = frameNumber;
+    window.requestAnimationFrame(scrollPlay);
+    }
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ysimc18/blog/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+    window.requestAnimationFrame(scrollPlay);
+    
+    </script>
+</body>
+</html>
